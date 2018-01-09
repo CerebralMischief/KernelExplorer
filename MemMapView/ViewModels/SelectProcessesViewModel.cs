@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using KernelExplorer.Driver;
 using System.Windows.Media;
 using Syncfusion.Data;
+using Zodiacon.ManagedWindows.Core;
 
 namespace MemMapView.ViewModels {
     sealed class SelectProcessesViewModel : DialogViewModelBase {
@@ -19,6 +20,8 @@ namespace MemMapView.ViewModels {
 
         public SelectProcessesViewModel(Window dialog, DriverInterface driver) : base(dialog) {
             _driver = driver;
+            CanExecuteOKCommand = () => SelectedProcesses.Count > 0;
+            OKCommand = OKCommand.ObservesProperty(() => SelectedItem);
         }
 
         ObservableCollection<ProcessViewModel> _processes;
@@ -27,7 +30,7 @@ namespace MemMapView.ViewModels {
                 if (_processes != null)
                     return _processes;
                 _processes = new ObservableCollection<ProcessViewModel>();
-                var processes = NativeProcess.EnumProcesses();
+                var processes = SystemInformation.EnumProcesses();
                 foreach (var process in processes.Where(p => p.Id != 0)) {
                     using (var hProcess = _driver.OpenProcessHandle(ProcessAccessMask.QueryInformation, process.Id)) {
                         if (hProcess == null || hProcess.IsInvalid)
@@ -59,6 +62,8 @@ namespace MemMapView.ViewModels {
             set => SetProperty(ref _selectedProcesses, value);
         }
 
+        ProcessViewModel _selectedItem;
+
         public ICollectionViewAdv View { get; set; }
 
         string _filterText;
@@ -78,6 +83,11 @@ namespace MemMapView.ViewModels {
                     View.RefreshFilter();
                 }
             }
+        }
+
+        public ProcessViewModel SelectedItem {
+            get => _selectedItem;
+            set => SetProperty(ref _selectedItem, value);
         }
     }
 }

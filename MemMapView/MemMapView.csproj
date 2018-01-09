@@ -50,6 +50,7 @@
     <LangVersion>7.2</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
@@ -63,7 +64,9 @@
     </Reference>
     <Reference Include="Syncfusion.Data.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.SfGrid.WPF, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SfSkinManager.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Shared.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Themes.Metro.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Tools.Wpf, Version=15.4460.0.17, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -85,11 +88,14 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Zodiacon.ManagedWindows.Core, Version=1.0.6543.29032, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zodiacon.ManagedWindows.Processes.0.1.11\lib\net45\Zodiacon.ManagedWindows.Core.dll</HintPath>
+    <Reference Include="Zodiacon.DebugHelp, Version=1.0.6569.18201, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.DebugHelp.0.4.4\lib\net40\Zodiacon.DebugHelp.dll</HintPath>
     </Reference>
-    <Reference Include="Zodiacon.ManagedWindows.Processes, Version=1.0.6546.24855, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zodiacon.ManagedWindows.Processes.0.1.11\lib\net45\Zodiacon.ManagedWindows.Processes.dll</HintPath>
+    <Reference Include="Zodiacon.ManagedWindows.Core, Version=1.0.6575.31133, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.ManagedWindows.Processes.0.1.20\lib\net45\Zodiacon.ManagedWindows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Zodiacon.ManagedWindows.Processes, Version=1.0.6575.40741, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.ManagedWindows.Processes.0.1.20\lib\net45\Zodiacon.ManagedWindows.Processes.dll</HintPath>
     </Reference>
     <Reference Include="Zodiacon.WPF, Version=1.1.6543.24348, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Zodiacon.WPF.1.2.15\lib\net45\Zodiacon.WPF.dll</HintPath>
@@ -100,6 +106,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\SkinBehavior.cs" />
     <Compile Include="Controls\OKCancel.xaml.cs">
       <DependentUpon>OKCancel.xaml</DependentUpon>
     </Compile>
